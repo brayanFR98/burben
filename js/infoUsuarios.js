@@ -162,4 +162,33 @@ $(document).ready(function () {
         }
         e.preventDefault();
     });
+
+    // IMPRIMIR PDF
+    $("#imprimirpdf").click(function (e) { 
+        window.open('./reports/usuariosPDF.php', '_blank');
+        
+        e.preventDefault();
+    });
+
+    // IMPRIMIR EXCEL
+    $('#imprimirexcel').on('click', function() {
+        $.ajax({
+            url: './reports/usuariosJSON.php', // Ruta al archivo PHP que genera JSON
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                // Configuración para SheetJS
+                const ws = XLSX.utils.json_to_sheet(data);
+                const wb = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wb, ws, 'Usuarios');
+
+                // Genera y descarga el archivo Excel
+                XLSX.writeFile(wb, 'Lista_Usuarios.xlsx');
+            },
+            error: function(xhr, status, error) {
+                console.error("Error al obtener los datos: ", error);
+            }
+        });
+    });
+    
 });

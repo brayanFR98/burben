@@ -49,6 +49,17 @@ if (!isset($_SESSION["oid"])) {
             <p class="lead">con correo <?= $_SESSION["email"] ?></p>
         </div>
     </header>
+    <section class="flex flex-row justify-between">
+        <div>
+            <h1>Imprimir datos en PDF</h1>
+            <button class="btn btn-info" id="imprimirpdf"><i class="text-white fa fa-print" aria-hidden="true"></i></button>
+        </div>
+        <div>
+        <h1>Imprimir datos en Excel</h1>
+        <button class="btn btn-success" id="imprimirexcel"><i class="text-white fa-solid fa-file-excel"></i></button>
+        </div>
+
+    </section>
     <!-- MODAL -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -105,11 +116,12 @@ if (!isset($_SESSION["oid"])) {
                             <textarea class="form-control" id="notas" placeholder="notas"></textarea>
                         </div>
 
-                        
+
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="cerrarModal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="cerrarModal" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Close</button>
                     <button id="resgitroUsuario" class="btn btn-success">Registrar</button>
                 </div>
             </div>
@@ -152,6 +164,7 @@ if (!isset($_SESSION["oid"])) {
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <script src="./js/jquery.js"></script>
     <script src="./js/jquery.mask.js"></script>
     <script src="./js/funcionesGlobales.js"></script>
